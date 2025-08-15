@@ -1,0 +1,2 @@
+# SomeofDataStructure
+Some stupid scripts!!!
