@@ -1,5 +1,5 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/yangfanbaybyone/LocalProjects/DataStructure/main'
+binary-path:     '/Users/yangfanbaybyone/LocalProjects/SomeofDataStructure/DataStructure/main'
 relocations:     []
 ...

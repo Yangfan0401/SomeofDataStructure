@@ -118,20 +118,11 @@ int main()
     // printf("%d\n",temp);
     // temp = test_13_findKey(s4,8);
     // printf("%d\n",temp);
-    // printf("[");
-    int s[] = {12, 4, 5, 9, 8, 10};
-    // test_16(s,6);
-    MergeSort(s, 0, 6);
-    for (int i = 0; i < 6; i++)
-    {
-        if (i != 5)
-        {
-            printf("%d, ", s[i]);
-        }
-        else
-        {
-            printf("%d]\n", s[i]);
-        }
-    }
+    // int s[] = {12, 1, 4, 5, 9, 8, 10, 3};
+    // int len = sizeof(s) / sizeof(int);
+
+    //归并排序测试
+    // MergeSort(s, 0, len - 1);
+    
     return 0;
 }
