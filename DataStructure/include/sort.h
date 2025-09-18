@@ -99,7 +99,7 @@ void merge(int arr[], int l, int m, int h)
     }
 }
 
-//快速排序
+// 快速排序
 void QuickSort(int arr[], int s, int e)
 {
     if (s >= e)
@@ -109,7 +109,7 @@ void QuickSort(int arr[], int s, int e)
     QuickSort(arr, s, m - 1);
     QuickSort(arr, m + 1, e);
 }
-//选择排序
+// 选择排序
 void SelectSort(int arr[], int length)
 {
     for (int i = 0; i < length; i++)
@@ -136,7 +136,7 @@ void SelectSort(int arr[], int length)
         arr[ith] = temp;
     }
 }
-//冒泡排序
+// 冒泡排序
 void BubbleSort(int arr[], int length)
 {
 
@@ -154,7 +154,7 @@ void BubbleSort(int arr[], int length)
         }
     }
 }
-//二路归并排序
+// 二路归并排序
 void MergeSort(int arr[], int l, int h)
 {
     if (l >= h)
@@ -165,7 +165,22 @@ void MergeSort(int arr[], int l, int h)
     merge(arr, l, m, h); // 此时上两层分治到底层
 }
 
-//插入排序
-void insertSort(int arr[]) {
-    
+// 插入排序--希尔
+void InsertSort(int arr[], int len)
+{
+    for (int i = 1; i < len; i++)
+    {
+        int temp = arr[i];
+        for (int j = 0; j < i; j++)
+        { // 已排区[0-,i-1],待排区[i,len]
+            if (arr[j] > temp)
+            {
+                for (int k = i; k > j;k--) {
+                    arr[k] = arr[k-1];
+                }
+                arr[j] = temp;
+                break;
+            }
+        }
+    }
 }

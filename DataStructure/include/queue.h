@@ -7,7 +7,6 @@ typedef struct qNode
 {
     int val;
     struct qNode *next;
-
 } QNode;
 // 链队列能否理解为尾插法的链表,加头指针和尾指针 OK
 

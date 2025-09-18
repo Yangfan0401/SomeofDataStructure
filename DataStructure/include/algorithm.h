@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "sort.h"
+#include "linkList.h"
 
 // 10年
 // 数组左移
@@ -227,4 +228,10 @@ void test_16(int s[], int length)
             printf("%d]\n", s[i]);
         }
     }
+}
+
+
+//19单链表 环序
+test_19(LinkedList l) {
+     
 }

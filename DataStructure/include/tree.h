@@ -128,3 +128,90 @@ void levelBTree(TNode *root)
     free(q);
     printf("\n");
 }
+
+typedef struct UnionSets
+{
+    int Sets[MaxSize];
+    int size;
+} uSets;
+
+uSets *initialSets()
+{
+    uSets *sets = (uSets *)malloc(sizeof(uSets));
+    sets->size = MaxSize;
+    for (int i = 0; i < sets->size; i++)
+    {
+        sets->Sets[i] = -1;
+    }
+
+    return sets;
+}
+
+void Union(uSets *set, int Root1, int Root2, int flag)
+{
+    if (Root1 == Root2 || (!(set->Sets[Root2] < 0) || !(set->Sets[Root2] < 0)))
+        return;
+
+    if (flag)
+    {
+        /*优化
+            细则: [Root]下存储的数的绝对值是所挂结点个数(初始化为-1)
+            把小树挂到大树下 减小合并时高度的增加
+            */
+        if (Root1 > Root2)
+        { // Root2下节点数小于Root1
+
+            set->Sets[Root2] += set->Sets[Root1];
+            set->Sets[Root1] = Root2; // Roo1挂到Root2 则此时Root1不再做根结点
+        }
+        else
+        { // Root2下节点数小于Root1
+            set->Sets[Root1] += set->Sets[Root2];
+            set->Sets[Root2] = Root1; // Root2挂到Root1 则此时Root2不再做根结点
+        }
+    }
+    else
+    {
+        // 未优化前
+        set->Sets[Root1] = Root2; // 把Roo1挂到Root2下
+    }
+}
+
+int Find(uSets *set, int x, bool flag)
+{
+    if ((set->Sets[x] < 0))
+        return x;
+
+    int root = x;
+    if (flag)
+    {
+
+        /* 优化后
+    思路: 基于路径压缩
+    */
+
+        while (set->Sets[root] >= 0)
+        {
+            root = set->Sets[root];
+        }
+        // 压缩路径
+        while (x != root)
+        {
+            int t = x;
+            x = set->Sets[x];    // 回上层
+            set->Sets[t] = root; // 修改根
+        }
+    }
+    else
+    {
+
+        // 未优化
+        int temp = x;
+        while (set->Sets[temp] >= 0)
+        {
+            temp = set->Sets[temp];
+        }
+        return temp;
+    }
+    return root;
+}

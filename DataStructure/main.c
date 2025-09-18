@@ -2,7 +2,7 @@
 #include "include/linkList.h"
 #include "include/tree.h"
 // #include "include/queue.h"
-#include "include/algorithm.h"
+// #include "include/algorithm.h"
 
 int main()
 {
@@ -118,11 +118,53 @@ int main()
     // printf("%d\n",temp);
     // temp = test_13_findKey(s4,8);
     // printf("%d\n",temp);
-    // int s[] = {12, 1, 4, 5, 9, 8, 10, 3};
-    // int len = sizeof(s) / sizeof(int);
 
-    //归并排序测试
+    // 排序
+    int s[] = {12, 1, 4, 5, 9, 8, 10, 3};
+    int len = sizeof(s) / sizeof(int);
+    // 归并排序测试
     // MergeSort(s, 0, len - 1);
-    
+    // 插排测试
+    // InsertSort(s, len);
+
+    LinkedList *l = createList();
+    LinkedList *l_2 = createList();
+    ListNode *node = createNode(-1);
+    l->head = node;
+    l->tail = node;
+    l_2->head = createNode(-1);
+    l_2->tail = l_2->head;
+    // node->next = createNode(3);
+    // node->next->next = createNode(5);
+    // node->next->next->next = createNode(6);
+    ListNode *temp = l->head;
+    for (int i = 0;i <= 12;i++) {
+        temp = l->tail;
+        temp->next = createNode(2+i);
+        l->tail = temp->next;
+    }
+    crossList(l);
+
+    temp = l_2->head;
+    for (int i = 0;i <= 3;i++) {
+        temp = l_2->tail;
+        temp->next = createNode(3*i+20);
+        l_2->tail = temp->next;
+    }
+    for (int i = 8;i < 14;i++) {
+        temp = l_2->tail;
+        temp->next = createNode(i+1);
+        l_2->tail = temp->next;
+    }
+    crossList(l_2);
+    unionList(l,l_2);
+
+
+
+
+
+
+
+
     return 0;
 }
