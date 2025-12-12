@@ -177,6 +177,14 @@ void Union(uSets *set, int Root1, int Root2, int flag)
     }
 }
 
+int  recurseFind(uSets *set, int x){
+    
+    if(set->Set[x] < 0) {
+    		return x;
+	}	
+    
+    return set->Set[x] = recuseFind(set, set->Set[x]);
+}
 int Find(uSets *set, int x, bool flag)
 {
     if ((set->Sets[x] < 0))
